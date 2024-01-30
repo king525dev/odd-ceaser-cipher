@@ -3,19 +3,41 @@ function generateKey(min, max, round){
      let a = [dateNumber(), superRandomiser()];
      let b = [dateNumber(), superRandomiser()];
 
-     const final = oddSwitch(a, b);
+     let final = oddSwitch(a, b);
+
+     const checkMin = (val) => {
+          if(min){
+               if(val < min){
+                    while(val < min ){
+                         val *= 2;
+                    }
+                    if(val > max){
+                         while(val > max ){
+                              val -= (val/7);
+                         }
+                         return val;
+                    }else{
+                         return val;
+                    }
+               }else{
+                    return val
+               }
+          }else{
+               return val;
+          }
+     }
 
      if(max){
           if(final > max){
-               return (round)?Math.round(final%max):final%max;
+               return (round)?Math.round(checkMin(final%max)):checkMin((final%max));
           }else{
                while(final < max){
-                    final = final**5
+                    final = final**5;
                }
-               return (round)?Math.round(final%max):final%max
+               return (round)?Math.round(checkMin(final%max)):checkMin(final%max);
           }
      }else{
-          return final;
+          return (round)?Math.round(checkMin(final)):checkMin(final);
      }
 }
 
@@ -44,4 +66,4 @@ function oddSwitch(a, b){
      return (a[0]*b[1])+(b[0]*a[1])
 }
 
-console.log(generateKey(10000, true))
+console.log(generateKey(20, 30, true))
