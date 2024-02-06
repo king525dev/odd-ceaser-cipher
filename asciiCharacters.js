@@ -1,7 +1,7 @@
 const print = require('./printer');
 const asciiArray = [];
 const unWantedChars = [
-     0, 7, 8, 9, 10, 11, 12, 13, 14, 15, 127, 27, 32
+     0, 7, 8, 9, 10, 11, 12, 13, 14, 15, 127, 27, 32, 1, 2, 3, 4, 5, 6, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 20, 31, 16, 17, 18, 30
 ]
 
 for (let i = 0; i < 128; i++) {
@@ -22,15 +22,10 @@ for (let i = 0; i < 128; i++) {
           }
      }
 
-     // console.log(String.fromCharCode(i) + " -----> " + i)
-     // console.log(unWantedChars.includes(i))
-
      if(deter == conditions.length){
-          asciiArray.push(String.fromCharCode(i));
-          console.log(String.fromCharCode(i))
+          asciiArray.push(`[${String.fromCharCode(i)} -> ${i}]`);
+
      }
 }
 
-
-console.log(asciiArray)
-print(asciiArray);
+module.exports = asciiArray;

@@ -63,7 +63,7 @@ const superRandomiser = () => {
 }
 
 function oddSwitch(a, b){
-     return (a[0]*b[1])+(b[0]*a[1])
+     return (a[0]*b[1])+(b[0]*a[1]);
 }
 
-console.log(generateKey(20, 30, true))
+module.exports = generateKey;

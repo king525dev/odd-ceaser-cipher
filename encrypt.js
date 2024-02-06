@@ -1,5 +1,7 @@
-function encrypt(string, key){
-     return string.replaceAll(" ", "&");
-}
+const newKey = require('./keyGenerator');
+const ceaserCipher = require("./ceaser")
 
-console.log(encrypt("yoooooo hiiiiiii"));
+const ket = newKey(999, 10000, true);
+
+console.log(ket)
+console.log(ceaserCipher("All my fellas", ket).join(""))
