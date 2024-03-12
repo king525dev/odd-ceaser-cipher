@@ -1,21 +1,36 @@
-function sixBitXOR(nibble){
-     nibble.toString().split("")
-     const num = [
-          [Number(nibble[0]), Number(nibble[1])],
-          [Number(nibble[2]), Number(nibble[3])],
-          [Number(nibble[4]), Number(nibble[5])]
-     ]
+function logicOperator(nibble, mask, gate){
 
-     const x11 = XOR(num[0][0], num[0][1]);
-     const x12 = XOR(num[1][0], num[1][1]);
-     const x13 = XOR(num[2][0], num[2][1]);
+     nibble.toString().split("");
+     mask.toString().split("");
+     const resValue = []
+     
+     for (i = 0; i > nibble.length; i++){
+          resValue.push(gate(nibble[i], mask[i]))
+     }
 
-     const x21 = XOR(x11, x12);
-     const x22 = x13
+     return resValue.join("");
+     // const num = [
+     //      [Number(nibble[0]), Number(nibble[1])],
+     //      [Number(nibble[2]), Number(nibble[3])],
+     //      [Number(nibble[4]), Number(nibble[5])]
+     // ]
 
-     const x31 = XOR(x21, x22)
+     // num.forEach((arr) => {
+     //      arr.forEach((num) => {
+     //           console.log(num);
+     //      });
+     // });
 
-     return x31;
+     // const x11 = XOR(num[0][0], num[0][1]);
+     // const x12 = XOR(num[1][0], num[1][1]);
+     // const x13 =XOR(num[2][0], num[2][1]);
+
+     // const x21 = XOR(x11, x12);
+     // const x22 = x13
+
+     // const x31 = XOR(x21, x22)
+
+     // return x31;
 }
 
 function NOT(a){
@@ -50,7 +65,7 @@ function OR(a, b){
      }
 }
 
-console.log(sixBitXOR(101011))
+console.log(logicOperator("000000", "111111", OR))
 
 //        >NOT GATE<
 // +----------------------------+
