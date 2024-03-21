@@ -24,7 +24,7 @@
 
 - Build Key Generator                   |    [-]
 - Build List Generator                  |    [-]
-- Build aspects of Methodologies        |    [-]
+- Build aspects of Modules              |    [-]
 - Build Cipher for Methodology [1]      |    [ ]
 - Build DeCipher for Methodology [1]    |    [ ]
 - Build Cipher for Methodology [2]      |    [ ]
