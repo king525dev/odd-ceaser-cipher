@@ -1,0 +1,35 @@
+// --> ODD-CEASER-CIPHER <-- //
+
+
+{> METHODOLOGIES <}
+
+--> Methodology [1]
+- Get shifted in a six-bit array
+- Use mask operation to mask each character
+- Get shifted again in an ascii array
+
+--> Methodology [2]
+- Get shifted in a six-bit array
+- Use position to map each value to a new one
+- Get shifted again in an ascii array
+
+--> Methodology [3]
+- Get shifted in a six-bit array
+- Use position to map each value to a new one
+- Use mask operation to mask each character
+- Get shifted again in an ascii array
+
+
+{> TASK LIST <}
+
+- Build Key Generator                   |    [-]
+- Build List Generator                  |    [-]
+- Build aspects of Methodologies        |    [-]
+- Build Cipher for Methodology [1]      |    [ ]
+- Build DeCipher for Methodology [1]    |    [ ]
+- Build Cipher for Methodology [2]      |    [ ]
+- Build DeCipher for Methodology [2]    |    [ ]
+- Build Cipher for Methodology [3]      |    [ ]
+- Build DeCipher for Methodology [3]    |    [ ]
+- Build File accepting system for main  |    [ ]
+- Build Frontend                        |    [ ]
