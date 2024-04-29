@@ -25,7 +25,7 @@
 - Build Key Generator                   |    [-]
 - Build List Generator                  |    [-]
 - Build aspects of Modules              |    [-]
-- Build Cipher for shift Methodology    |    [ ]
+- Build Cipher for shift Methodology    |    [-]
 - Build DeCipher for Methodology        |    [ ]
 - Build File accepting system for main  |    [ ]
 - Build Frontend                        |    [ ]

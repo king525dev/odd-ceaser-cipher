@@ -18,4 +18,4 @@ function encrypt(text, key){
      return finalOut;
 }
 
-console.log(encrypt("All my fellas", "4853"));
+module.exports = encrypt;
