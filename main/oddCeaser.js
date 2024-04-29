@@ -22,12 +22,13 @@ function to2DArray(array, size) {
 
 function oddCeaser(string, key){
      const main = makeMatrix(string);
+     console.log(main)
      key = key.toString();
      
      for (let i = 0; i < main.length; i++) {
-          main[i] = main[i].split("");
+          // main[i] = main[i].split("");
           for (let j = 0; j < main[i].length; j++) {
-               main[i][j] = ceaser.single(main[i][j], key[j], table[1])
+               main[i][j] = ceaser.single(main[i][j], key[j], table[2])
           }
           main[i] = main[i].join("");
      }
