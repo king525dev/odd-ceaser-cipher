@@ -8,4 +8,6 @@ function binaryConverter(num, bin){
      }
 }
 
-console.log(binaryConverter(1111, false))
+// console.log(binaryConverter(1111, false))
+
+module.exports = binaryConverter;

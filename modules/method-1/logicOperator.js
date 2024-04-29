@@ -4,8 +4,14 @@ function logicOperator(nibble, mask, gate){
      mask.toString().split("");
      const resValue = []
      
-     for (i = 0; i < nibble.length; i++){
-          resValue.push(gate(nibble[i], mask[i]))
+     if(gate == "NOT"){
+          for (i = 0; i < nibble.length; i++){
+               resValue.push(gate(nibble[i]))
+          }
+     }else{
+          for (i = 0; i < nibble.length; i++){
+               resValue.push(gate(nibble[i], mask[i]))
+          }
      }
 
      return resValue.join("");
@@ -43,7 +49,12 @@ function OR(a, b){
      }
 }
 
-console.log(logicOperator("101010", "111111", XOR))
+// console.log(logicOperator("101010", "111111", XOR))
+module.exports = {
+     logicOperator, 
+     XOR,
+     NOT
+};
 
 //        >NOT GATE<
 // +----------------------------+
