@@ -1,4 +1,4 @@
-const print = require('../modules/printer');
+const print = require('../printer');
 const asciiArray = [];
 const unWantedChars = [
      0, 7, 8, 9, 10, 11, 12, 13, 14, 15, 127, 27, 32, 1, 2, 3, 4, 5, 6, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 20, 31, 16, 17, 18, 30
