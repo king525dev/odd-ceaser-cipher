@@ -11,14 +11,11 @@ function encrypt(text, key){
 
      //Initial Ceaser
      let iniOut = ceaserCipher(text, key);
-     console.log(iniOut)
 
      //Odd Ceaser
      const finalOut = oddCeaser(iniOut, key);
 
      return finalOut;
 }
-
-console.log(encrypt("All my fellas", 1234));
 
 module.exports = encrypt;
