@@ -1,5 +1,5 @@
 const factorFinder = require('./factorFinder');
-const ceaser = require('./simpleCeaser');
+const ceaser = require('./revSimpleCeaser');
 const table = require("./asciiCharacters");
 
 function makeMatrix(string){

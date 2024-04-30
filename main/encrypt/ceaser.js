@@ -3,9 +3,10 @@ const table = require("./asciiCharacters");
 function encrypt(string, key){
      string = string.replaceAll(" ", "&").split("");
      const caeserKey = Math.round((key/7)%(table[1].length))
+     console.log(caeserKey);
 
      for(let i = 0 ; string.length > i; i++){
-          const index = table[0].indexOf(string[i]);
+          const index = table[1].indexOf(string[i]);
 
           if(index > -1){
 

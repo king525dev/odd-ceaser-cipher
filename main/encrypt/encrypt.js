@@ -10,12 +10,15 @@ function encrypt(text, key){
      key = (key)?key:nKey;
 
      //Initial Ceaser
-     let firstOut = ceaserCipher(text, key);
+     let iniOut = ceaserCipher(text, key);
+     console.log(iniOut)
 
      //Odd Ceaser
-     const finalOut = oddCeaser(firstOut, key);
+     const finalOut = oddCeaser(iniOut, key);
 
      return finalOut;
 }
+
+console.log(encrypt("All my fellas", 1234));
 
 module.exports = encrypt;
