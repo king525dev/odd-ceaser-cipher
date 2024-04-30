@@ -9,7 +9,10 @@ function decrypt(text, key){
      //Ceaser
      const finalOut = ceaser(iniOut, key)
 
-     return finalOut.join("");
+     return {
+          out: finalOut.join(""),
+          key
+     }
 }
 
 module.exports = decrypt;

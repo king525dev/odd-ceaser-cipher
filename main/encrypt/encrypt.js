@@ -15,7 +15,10 @@ function encrypt(text, key){
      //Odd Ceaser
      const finalOut = oddCeaser(iniOut, key);
 
-     return finalOut;
+     return {
+          out: finalOut,
+          key
+     };
 }
 
 module.exports = encrypt;
