@@ -27,6 +27,6 @@
 - Build aspects of Modules              |    [-]
 - Build Cipher for shift Methodology    |    [-]
 - Build DeCipher for Methodology        |    [-]
-- Build Main function                   |    [ ]
+- Build Main function                   |    [-]
 - Build File accepting system for main  |    [ ]
 - Build Frontend                        |    [ ]
