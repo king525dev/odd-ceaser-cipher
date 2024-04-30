@@ -9,7 +9,7 @@ function OddCeaser(string, key, action){
      }
 }
 
-const ini = OddCeaser("All my fellas", "", true)
+const ini = OddCeaser("Hello World", "", true)
 const final = OddCeaser(ini.out, ini.key, false)
 
 console.log(ini.out)

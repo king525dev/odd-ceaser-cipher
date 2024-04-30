@@ -19,6 +19,13 @@
 - Use mask operation to mask each character
 - Get shifted again in an ascii array
 
+--> Methodology [4]
+- Get shifted in Ascii array
+- Seperate text into 4 character arrays
+- Use each index of the key
+- Use ceaser cipher on each character based on the position they are in the array 
+- Send back the values
+
 
 {> TASK LIST <}
 
