@@ -1,6 +1,12 @@
 const encrypt = require('./main/encrypt/encrypt');
 const decrypt = require('./main/decrypt/decrypt');
+const readline = require("readline");
+const rl = readline.createInterface({
+     input: process.stdin,
+     output: process.stdout
+});
 
+//Initialize function
 function OddCeaser(string, key, action){
      if(!action){
           return decrypt(string, key);
@@ -8,9 +14,3 @@ function OddCeaser(string, key, action){
           return encrypt(string, key);
      }
 }
-
-const ini = OddCeaser("Hello World", "", true)
-const final = OddCeaser(ini.out, ini.key, false)
-
-console.log(ini.out)
-console.log(final.out)
