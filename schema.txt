@@ -35,5 +35,6 @@
 - Build Cipher for shift Methodology    |    [-]
 - Build DeCipher for Methodology        |    [-]
 - Build Main function                   |    [-]
-- Build File accepting system for main  |    [ ]
+- Build File accepting system for main  |    [-]
+- Build cmd interface                   |    [ ]
 - Build Frontend                        |    [ ]
