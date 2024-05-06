@@ -1,7 +1,9 @@
 const fs = require("fs");
+const path = require('path');
 
 function printer(name, string){
-     fs.writeFile(`${name}.txt`, string, (err) => {
+     path.basename += "-out"
+     fs.writeFile(name, string, (err) => {
           if(err){
                console.log(err);
           }else{
@@ -11,7 +13,7 @@ function printer(name, string){
 }
 
 function scanner(name){
-     fs.readFile(`${name}.txt`, "utf8", (err, file) => {
+     fs.readFile(name, "utf8", (err, file) => {
           if(err){
                console.log(err);
           }else{
@@ -27,3 +29,5 @@ function fileHandler(name, text, print){
           scanner(name)
      }
 }
+
+module.exports = fileHandler;
