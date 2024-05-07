@@ -19,7 +19,7 @@ function fileHandler(dir, key, action){
           if(err){
                console.log(err);
           }else{
-               const nDir = path.join(__dirname, `out-${date()}`)
+               const nDir = path.join(__dirname, `out-${date()}.txt`)
                const cip = OddCeaser(file, key, action)
                const out = `${cip.out}\n\nKey: ${cip.key}`
                fs.writeFile(nDir, out, (err) => {
@@ -48,10 +48,10 @@ console.log(`
 }
 
 function restart(){
-     const pr = prompt("Do you want to re-run the program? (y or n): ");
+     const pr = prompt("\nDo you want to run the program again? (y or n): ");
      if(pr == "y" || pr == "yes" || pr == "true"){
-          console.log("\n\n\n");
-          main();
+          console.log(`\n\n========================================================================================================================================\n`);
+          query();
      }else if(pr == "k"){
           return;
      }else{
@@ -59,13 +59,7 @@ function restart(){
      }
 }
 
-//Query
-function main(){
-
-     //Intro
-     intro();
-     console.log("\n");
-
+function query(){
      //First Query
      let q2 = prompt("Are you encrypting\\decrypting (en or de): ");
 
@@ -77,7 +71,7 @@ function main(){
           return;
      }else{
           console.error("Incorrect input, Try again\n\n");
-          main();
+          query();
           return;
      }
 
@@ -95,7 +89,8 @@ function main(){
                return;
           }
 
-          fileHandler(q3, q4, q2)
+          fileHandler(q3, q4, q2);
+          restart();
      }else if (q1 == "n" || q1 == "no" || q1 == "false"){
           const q3 = prompt("Input the text: ");
           if(q3 == "k"){
@@ -108,14 +103,26 @@ function main(){
 
           const output = OddCeaser(q3, q4, q2);
           console.log(`\nOutput --> \n${output.out}\n`)
-          console.log(`Key: ${output.key}\n`)
+          console.log(`Key: ${output.key}`)
+          restart();
      }else if(q1 == "k"){
           return;
      }else{
           console.error("Incorrect input, Try again\n\n");
-          main();
+          query();
           return;
      }
+}
+
+//Main
+function main(){
+
+     //Intro
+     intro();
+     console.log("\n");
+
+     //Run Query
+     query();
 
 }
 
