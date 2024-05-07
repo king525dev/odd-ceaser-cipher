@@ -36,5 +36,5 @@
 - Build DeCipher for Methodology        |    [-]
 - Build Main function                   |    [-]
 - Build File accepting system for main  |    [-]
-- Build cmd interface                   |    [ ]
+- Build cmd interface                   |    [-]
 - Build Frontend                        |    [ ]
