@@ -24,10 +24,12 @@ function scanner(name){
 
 function fileHandler(name, text, print){
      if(print){
-          printer(name, text);
+          return printer(name, text);
      }else{
-          scanner(name)
+          return scanner(name)
      }
 }
+
+console.log(scanner("schema.txt"));
 
 module.exports = fileHandler;

@@ -1,3 +1,4 @@
+const print = require("../../modules/printer")
 const asciiArray = [];
 const fullAsciiArray = [];
 const unWantedChars = [
@@ -26,7 +27,9 @@ for (let i = 0; i < 128; i++) {
           asciiArray.push(String.fromCharCode(i));
      }
 
-     fullAsciiArray.push(String.fromCharCode(i));
+     if( i > 31 && i != 127){
+          fullAsciiArray.push(String.fromCharCode(i));
+     }
 }
 
 const sixBitArray = [
