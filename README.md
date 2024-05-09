@@ -6,13 +6,13 @@ input.
 
 ## Installation
 
-The application can be installed through github [here]() or [here]()
+The application can be installed through github [here](https://github.com/king525dev/odd-ceaser-cipher/releases/tag/v1.0.0) or [here](https://github.com/king525dev/odd-ceaser-cipher/tree/main/dist)
 
 ## Usage/Examples
 
 ![App Screenshot](icons/resources/screenshot-1.png)
 
-![App Screenshot](icons/resources/screenshot-.png)
+![App Screenshot](icons/resources/screenshot-2.png)
 
 ## Hot Keys
 
