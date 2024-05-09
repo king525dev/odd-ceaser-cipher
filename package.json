@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "an advanced ceaser cipher ",
   "main": "index.js",
+  "icon": "./icons/icon.ico",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index"
@@ -18,7 +19,11 @@
   ],
   "author": "king525dev",
   "license": "ISC",
+  "pkg": {
+    "outputPath": "dist"
+  },
   "dependencies": {
-    "prompt-sync": "^4.2.0"
+    "prompt-sync": "^4.2.0",
+    "rcedit": "^4.0.1"
   }
 }

@@ -56,6 +56,9 @@ function restart(){
           query();
      }else if(pr == "k"){
           return;
+     }else if(pr == "r"){
+          main();
+          return;
      }else{
           return;
      }
@@ -71,6 +74,9 @@ function query(){
           q2 = false;
      }else if(q2 == "k"){
           return;
+     }else if(q2 == "r"){
+          main();
+          return;
      }else{
           console.error("Incorrect input, Try again\n\n");
           query();
@@ -85,9 +91,15 @@ function query(){
           const q3 = prompt("Input the file directory: ");
           if(q3 == "k"){
                return;
+          }else if(q3 == "r"){
+               main();
+               return;
           }
           const q4 = prompt("Input a 4-digit integer key (optional): ");
           if(q4 == "k"){
+               return;
+          }else if(q4 == "r"){
+               main();
                return;
           }
 
@@ -97,9 +109,15 @@ function query(){
           const q3 = prompt("Input the text: ");
           if(q3 == "k"){
                return;
+          }else if(q3 == "r"){
+               main();
+               return;
           }
           const q4 = prompt("Input a 4-digit integer key (optional): ");
           if(q4 == "k"){
+               return;
+          }else if(q4 == "r"){
+               main();
                return;
           }
 
@@ -108,6 +126,9 @@ function query(){
           console.log(`Key: ${output.key}`)
           restart();
      }else if(q1 == "k"){
+          return;
+     }else if(q1 == "r"){
+          main();
           return;
      }else{
           console.error("Incorrect input, Try again\n\n");
