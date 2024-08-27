@@ -1,4 +1,4 @@
-const print = require("../../modules/printer")
+const print = require("../../../modules/printer")
 const asciiArray = [];
 const fullAsciiArray = [];
 const unWantedChars = [

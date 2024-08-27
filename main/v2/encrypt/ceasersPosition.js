@@ -1,6 +1,6 @@
-const ceaser = require('../main/encrypt/simpleCeaser');
-const revCeaser = require('../main/decrypt/revSimpleCeaser')
-const table = require("../main/encrypt/asciiCharacters");
+const ceaser = require('../../v1/encrypt/simpleCeaser');
+const revCeaser = require('../../v1/decrypt/revSimpleCeaser')
+const table = require("../../v1/encrypt/asciiCharacters");
 const arr = table[2];
 
 const ceasersPosition = (plainText) => {
