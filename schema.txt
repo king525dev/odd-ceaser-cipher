@@ -51,9 +51,9 @@
 {> TASK LIST <}
 - Create index methodology              |    [ ]
 - Call Initial cipher                   |    [ ]
+- Test Variable position Cipher         |    [ ]
 - Test Cipher Kneader                   |    [ ]
 - Test Cipher DeKneader                 |    [ ]
-- Test Variable position Cipher         |    [ ]
 - Put all cipher in a sequence          |    [ ]
 - Build Main function                   |    [ ]
 - Build File accepting system for main  |    [ ]
