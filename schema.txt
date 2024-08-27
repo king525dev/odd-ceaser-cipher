@@ -38,3 +38,24 @@
 - Build File accepting system for main  |    [-]
 - Build cmd interface                   |    [-]
 - Build Frontend                        |    [ ]
+
+
+
+// --> ODD-CEASER-CIPHER v2 <-- //
+
+--> Methodology
+- Conduct First cipher
+- Knead Cipher multiple times
+- Conduct variable position cipher
+
+{> TASK LIST <}
+- Create index methodology              |    [ ]
+- Call Initial cipher                   |    [ ]
+- Test Cipher Kneader                   |    [ ]
+- Test Cipher DeKneader                 |    [ ]
+- Test Variable position Cipher         |    [ ]
+- Put all cipher in a sequence          |    [ ]
+- Build Main function                   |    [ ]
+- Build File accepting system for main  |    [ ]
+- Build cmd interface                   |    [ ]
+- Build Frontend                        |    [ ]
