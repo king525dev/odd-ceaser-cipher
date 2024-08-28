@@ -49,10 +49,10 @@
 - Conduct variable position cipher
 
 {> TASK LIST <}
-- Create index methodology              |    [ ]
-- Call Initial cipher                   |    [ ]
-- Test Variable position Cipher         |    [ ]
-- Test Cipher Kneader                   |    [ ]
+- Create index methodology              |    [-]
+- Call Initial cipher                   |    [-]
+- Test Variable position Cipher         |    [-]
+- Test Cipher Kneader                   |    [-]
 - Test Cipher DeKneader                 |    [ ]
 - Put all cipher in a sequence          |    [ ]
 - Build Main function                   |    [ ]
