@@ -26,7 +26,7 @@ function oddCeaser(string, key){
      
      for (let i = 0; i < main.length; i++) {
           for (let j = 0; j < main[i].length; j++) {
-               main[i][j] = ceaser.single(main[i][j], key[j], table[2])
+               main[i][j] = ceaser.single(main[i][j], key[j], table[1])
           }
           main[i] = main[i].join("");
      }

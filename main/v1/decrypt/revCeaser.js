@@ -11,14 +11,14 @@ function decrypt(string, key){
 
                const cipherIndex = () => {
                     let cid = index + caeserKey;
-                    if (cid > table[1].length){
+                    if (cid >= table[1].length){
                          return cid - (table[1].length);
                     }else{
                          return cid;
                     }
                }
 
-               string[i] = table[1][cipherIndex()]
+               string[i] = table[1][cipherIndex()];
           }
      }
      return string;

@@ -49,6 +49,7 @@
 - Conduct variable position cipher
 
 {> TASK LIST <}
+
 - Create index methodology              |    [-]
 - Call Initial cipher                   |    [-]
 - Test Variable position Cipher         |    [-]

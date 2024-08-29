@@ -1,17 +1,16 @@
-const v1 = require('../../v1/encrypt/encrypt');
-const reposition = require('./ceasersPosition');
+const v1 = require('../../v1/decrypt/decrypt');
+const reposition = require('./ceasersPositionRev');
 
 const knead = (string, key) => {
 
      let text = string;
      strKey = `${key}`;
 
-     // Initial Position shift
-     text = reposition.ceasersPosition(text)
-
      //Cog Shift
      text = reposition.cog(text, splitAdd(key))
 
+     // Initial Position unshift
+     text = reposition.ceasersPosition(text)
 
      return text;
 }
@@ -28,31 +27,33 @@ const splitAdd = (num) => {
      return accSum;
 }
 
-function encrypt(string, key){
-
-     console.log(`ini: ${string}`)
-
-     // Go through version-1
-     const iniOut = v1(string, key);
-     let text = iniOut.out;
-     key = iniOut.key;
-
-     console.log(`Stage-1: ${text}`)
-
-     // Initial Position shift
-     text = reposition.ceasersPosition(text)
-
-     console.log(`Stage-2: ${text}`)
+function decrypt(string, key){
+     
+     let text = string;
+     console.log(`ini: ${text}`)
 
      // Determine Knead number
      const kneadNum = splitAdd(key) %10;
-     
-     //Knead Plain text
+
+     //Knead Cipher text
      //for ( j = 0; j < kneadNum; j++){
           text = knead(text, key)
      //}
 
      console.log(`Stage-3: ${text}`)
+
+     // Initial Position unshift
+     text = reposition.ceasersPosition(text);
+
+     console.log(`Stage-2: ${text}`)
+
+     // Go through version-1
+     //console.log(v1("yhknjh", 4630))
+     const iniOut = v1(text, key);
+     text = iniOut.out;
+     key = iniOut.key;
+
+     console.log(`Stage-1: ${text}`)
 
      // Return Output
      return {
@@ -62,5 +63,5 @@ function encrypt(string, key){
 }
 
 console.log(
-     encrypt("ooooooooooooooooooooooooooooooooo", 2006)
+     decrypt('TSPGHGD;<;8/0/,"#"}tutqhihe[][XOP', 2006)
 )
