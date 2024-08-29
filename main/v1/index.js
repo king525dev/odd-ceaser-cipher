@@ -1,37 +1,16 @@
 const fs = require("fs");
 const path = require('path');
 const date = require('./modules/date');
-const enV1 = require('./main/v1/encrypt/encrypt');
-const deV1= require('./main/v1/decrypt/decrypt');
-const enV2 = require('./main/v1.1/encrypt/encrypt');
-const deV2= require('./main/v1.1/decrypt/decrypt');
+const encrypt = require('./main/encrypt/encrypt');
+const decrypt = require('./main/decrypt/decrypt');
 const prompt = require('prompt-sync')();
-version = true;
-
-const encrypt = (string, key, ver) => {
-     if (ver){
-          return enV2(string, key);
-     }else{
-          return enV1(string, key);
-     }
-}
-
-const decrypt = (string, key, ver) => {
-     console.log(ver);
-     if (ver){
-          return deV2(string, key);
-     }else{
-          return deV1(string, key);
-     }
-}
-
 
 //Initialize functions
 function OddCeaser(string, key, action){
      if(!action){
-          return decrypt(string, key, version);
+          return decrypt(string, key);
      }else{
-          return encrypt(string, key, version);
+          return encrypt(string, key);
      }
 }
 
@@ -67,9 +46,7 @@ console.log(`
                                                                                                                
         
 ========================================================================================================================
-                                                                                                    -- version 1.1.0 --
-
-`);
+          `);
 }
 
 function restart(){
@@ -88,18 +65,6 @@ function restart(){
 }
 
 function query(){
-
-     //Version Query
-     let ver = prompt("Do you want continue with version 1.1.0 (y or n): ");
-
-     if(ver == "v1.0" || ver == "n" || ver == "false" || ver == "no" || ver == "1.0"){
-          version = false;
-          console.info("\n ---- Switching to Version 1.0.0 .... ----\n");
-     }else{
-          version = true;
-          console.info("\n ---- Switching to Version 1.1.0 .... ----\n");
-     }
-
      //First Query
      let q2 = prompt("Are you encrypting\\decrypting (en or de): ");
 

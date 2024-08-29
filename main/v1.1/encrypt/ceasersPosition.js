@@ -7,9 +7,7 @@ const ceasersPosition = (plainText) => {
      const text = [...plainText];
 
      for( let i = 0; i < text.length; i++ ){
-          //console.log(`Before: ${i} --> ${text[i]}`)
           text[i] = ceaser.single(text[i], i, arr)
-          //console.log(`After: ${i} --> ${text[i]}`)
      }
 
      return text.join("")

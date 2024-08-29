@@ -30,29 +30,20 @@ const splitAdd = (num) => {
 function decrypt(string, key){
      
      let text = string;
-     console.log(`ini: ${text}`)
 
      // Determine Knead number
      const kneadNum = splitAdd(key) %10;
 
      //Knead Cipher text
-     //for ( j = 0; j < kneadNum; j++){
-          text = knead(text, key)
-     //}
-
-     console.log(`Stage-3: ${text}`)
+     text = knead(text, key)
 
      // Initial Position unshift
      text = reposition.ceasersPosition(text);
-
-     console.log(`Stage-2: ${text}`)
 
      // Go through version-1
      const iniOut = v1(text, key);
      text = iniOut.out;
      key = iniOut.key;
-
-     console.log(`Stage-1: ${text}`)
 
      // Return Output
      return {
