@@ -48,7 +48,6 @@ function decrypt(string, key){
      console.log(`Stage-2: ${text}`)
 
      // Go through version-1
-     //console.log(v1("yhknjh", 4630))
      const iniOut = v1(text, key);
      text = iniOut.out;
      key = iniOut.key;
@@ -62,6 +61,4 @@ function decrypt(string, key){
      };
 }
 
-console.log(
-     decrypt('TSPGHGD;<;8/0/,"#"}tutqhihe[][XOP', 2006)
-)
+module.exports = decrypt;
