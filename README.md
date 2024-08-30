@@ -8,6 +8,9 @@ input.
 
 The application can be installed through github [here](https://github.com/king525dev/odd-ceaser-cipher/releases/tag/v1.0.0) or [here](https://github.com/king525dev/odd-ceaser-cipher/tree/main/dist)
 
+- [Version 1.0](./dist/v1/oddCeaser-win.exe)
+- [Version 1.1](./dist/OddCeaser.exe)
+
 ## Usage/Examples
 
 ![App Screenshot](icons/resources/screenshot-1.png)
