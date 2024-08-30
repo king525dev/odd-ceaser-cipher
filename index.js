@@ -17,7 +17,6 @@ const encrypt = (string, key, ver) => {
 }
 
 const decrypt = (string, key, ver) => {
-     console.log(ver);
      if (ver){
           return deV2(string, key);
      }else{

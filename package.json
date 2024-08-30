@@ -6,7 +6,9 @@
   "icon": "./icons/icon.ico",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index"
+    "start": "node index",
+    "package": "node build",
+    "build": "esbuild index.js --bundle --platform=node --outfile=out.js"
   },
   "keywords": [
     "cipher",
@@ -20,9 +22,19 @@
   "author": "king525dev",
   "license": "ISC",
   "pkg": {
-    "outputPath": "dist"
+    "outputPath": "dist",
+    "targets": [
+      "node20-linux-x64",
+      "node20-macos-x64",
+      "node20-win-x64"
+    ]
+  },
+  "bin": {
+    "paths": "index.js"
   },
   "dependencies": {
+    "@angablue/exe": "^3.2.3",
+    "esbuild": "^0.23.1",
     "prompt-sync": "^4.2.0",
     "rcedit": "^4.0.1"
   }
