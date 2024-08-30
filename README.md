@@ -39,6 +39,4 @@ The application can be installed through github [here](https://github.com/king52
 
  For more information on the author click [here](https://king525-portfolio.pages.dev/).
 
- - Icon created by Rohman Harris from the Noun Project.
-
  <!-- ORE.A. ORIGINAL -->
