@@ -25,3 +25,13 @@ To convert to executable...
 https://anga.blue/blog/windows-executable-file-exe-node-js
 
 */
+
+/*
+
+` "package": "node build" `
+          --> Builds an executable
+
+` "build": "esbuild index.js --bundle --platform=node --outfile=out.js" `
+          --> Puts all javascript in a single file called "out.js"
+
+*/
