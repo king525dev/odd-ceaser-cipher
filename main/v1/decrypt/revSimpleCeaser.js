@@ -6,7 +6,7 @@ function groupCeaser(arr, shift, dict) {
                const cipherIndex = () => {
                     let cid = index + shift
                     if (cid > dict.length){
-                         return dict.length - cid;
+                         return cid - dict.length;
                     }else{
                          return cid;
                     }
@@ -23,7 +23,7 @@ function singleCeaser(str, shift, dict) {
 
      //console.log("Err Core: " +  dict)
 
-     if(index > -1){
+     if(index >= -1){
           const cipherIndex = () => {
                let cid = index + parseInt(shift)
                //console.log(`${str} -> ${cid}`)
