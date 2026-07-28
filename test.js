@@ -4,8 +4,8 @@
 // ------------------------------------------------------------
 //  Import your cipher functions
 // ------------------------------------------------------------
-const enV2 = require('./archive/v1/encrypt/encrypt');
-const deV2 = require('./archive/v1/decrypt/decrypt');
+const enV2 = require('./main/v1/encrypt/encrypt');
+const deV2 = require('./main/v1/decrypt/decrypt');
 
 const encrypt = (string, key) => enV2(string, key);
 const decrypt = (string, key) => deV2(string, key);

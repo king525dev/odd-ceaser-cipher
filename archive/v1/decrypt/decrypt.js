@@ -3,13 +3,6 @@ const ceaser = require('./revCeaser')
 
 function decrypt(text, key){
 
-     if (key === undefined || key === null) {
-        throw new Error('Key must be a string of exactly 4 digits');
-    }
-    if (typeof key !== 'string' || !/^\d{4}$/.test(key)) {
-        throw new Error('Key must be a string of exactly 4 digits');
-    }
-
      //Odd Ceaser
      const iniOut = oddCeaser(text.split(""), key);
 

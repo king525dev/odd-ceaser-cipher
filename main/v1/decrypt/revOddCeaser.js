@@ -1,13 +1,8 @@
-const factorFinder = require('../factorFinder');
 const ceaser = require('./revSimpleCeaser');
 const table = require("../asciiCharacters");
 
 function makeMatrix(string){
      const length = string.length;
-     
-     const split = factorFinder(length);
-     const rowNumber = (split[0] == 1)? (Math.round(length/2)):(split[0]);
-
      const results = to2DArray(string, 4);
      return results;
 }

@@ -4,13 +4,8 @@ const oddCeaser = require("./oddCeaser");
 
 function encrypt(text, key){
 
-     if (key === undefined || key === null) {
-        key = newKey(999, 10000, true); // fallback
-     }
-
-    if (typeof key !== 'string' || !/^\d{4}$/.test(key)) {
-        throw new Error('Key must be a string of exactly 4 digits');
-    }
+     //Generate Key
+     key = (key)?key:nKey;
 
      //Initial Ceaser
      let iniOut = ceaserCipher(text, key);

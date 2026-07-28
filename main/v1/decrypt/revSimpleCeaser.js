@@ -8,7 +8,6 @@ function singleCeaser(str, shift, dict) {
 }
 
 function groupCeaser(arr, shift, dict) {
-    // Correct version using modulo
     for (let i = 0; i < arr.length; i++) {
         const index = dict.indexOf(arr[i]);
         if (index > -1) {
