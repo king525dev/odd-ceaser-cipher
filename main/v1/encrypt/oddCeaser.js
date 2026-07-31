@@ -1,37 +1,30 @@
-const factorFinder = require('../factorFinder');
-const ceaser = require('./simpleCeaser');
-const table = require("../asciiCharacters");
+const { singleEncrypt } = require('./unicodeShift');
 
-function makeMatrix(string){
-     const length = string.length;
-     
-     const split = factorFinder(length);
-     const rowNumber = (split[0] == 1)? (Math.round(length/2)):(split[0]);
-
-     const results = to2DArray(string, 4);
-     return results;
+function makeMatrix(string) {
+    const results = to2DArray(string, 4);
+    return results;
 }
 
 function to2DArray(array, size) {
-     let result = [];
-     for(let i = 0; i < array.length; i += size) {
-          result.push(array.slice(i, i + size));
-     }
-     return result; 
+    let result = [];
+    for (let i = 0; i < array.length; i += size) {
+        result.push(array.slice(i, i + size));
+    }
+    return result;
 }
 
-function oddCeaser(string, key){
-     const main = makeMatrix(string);
-     key = key.toString().split("");
-     
-     for (let i = 0; i < main.length; i++) {
-          for (let j = 0; j < main[i].length; j++) {
-               main[i][j] = ceaser.single(main[i][j], key[j], table[1])
-          }
-          main[i] = main[i].join("");
-     }
-
-     return main.join("");
+function oddCeaser(string, key) {
+    const chars = [...string]; // split into array of characters (including surrogate pairs properly)
+    const main = to2DArray(chars, 4);
+    key = key.toString().split("");
+    
+    for (let i = 0; i < main.length; i++) {
+        for (let j = 0; j < main[i].length; j++) {
+            main[i][j] = singleEncrypt(main[i][j], parseInt(key[j]));
+        }
+        main[i] = main[i].join("");
+    }
+    return main.join("");
 }
 
 module.exports = oddCeaser;

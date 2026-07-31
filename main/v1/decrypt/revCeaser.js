@@ -1,19 +1,9 @@
-const table = require("../asciiCharacters");
+const { decryptString } = require('./revUnicodeShift');
 
-function decrypt(string, key){
-    string = string.split("");
-    const dict = table[1];
-    const dictLen = dict.length;
-    const caeserKey = Math.round((key / 7) % dictLen);
-
-    for (let i = 0; i < string.length; i++) {
-        const index = dict.indexOf(string[i]);
-        if (index > -1) {
-            const newIndex = (index + caeserKey) % dictLen;
-            string[i] = dict[newIndex];
-        }
-    }
-    return string;
+function decrypt(string, key) {
+    const numKey = Number(key);
+    const shift = Math.round((numKey / 7) % 0x110000);
+    console.log(`Caesar shift: ${shift}`)
+    return decryptString(string, shift);
 }
-
 module.exports = decrypt;

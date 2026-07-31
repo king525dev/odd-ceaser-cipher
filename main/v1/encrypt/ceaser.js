@@ -1,19 +1,9 @@
-const table = require("../asciiCharacters");
+const { encryptString } = require('./unicodeShift');
 
-function encrypt(string, key){
-    string = string.split(""); 
-    const dict = table[1];
-    const dictLen = dict.length;
-    const caeserKey = Math.round((key / 7) % dictLen);
-
-    for (let i = 0; i < string.length; i++) {
-        const index = dict.indexOf(string[i]);
-        if (index > -1) {
-            const newIndex = (index - caeserKey + dictLen) % dictLen;
-            string[i] = dict[newIndex];
-        }
-    }
-    return string;
+function encrypt(string, key) {
+    const numKey = Number(key);
+    const shift = Math.round((numKey / 7) % 0x110000);   // 0x110000 = 1,114,112
+    console.log(`Caesar shift: ${shift}`)
+    return encryptString(string, shift);
 }
-
 module.exports = encrypt;
