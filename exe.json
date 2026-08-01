@@ -1,0 +1,14 @@
+{
+    "entry": "index.js",
+    "out": "OddCeaser.exe",
+    "skipBundle": false,
+    "version": "{package:2.0.0}",
+    "icon": "./icons/icon.ico",
+    "executionLevel": "asInvoker",
+    "properties": {
+        "FileDescription": "{package:an advanced Symetrical cipher}",
+        "ProductName": "Odd Ceaser Cipher",
+        "LegalCopyright": "{package:king525dev} https://github.com/king525dev",
+        "OriginalFilename": "{package:odd-ceaser-cipher}"
+    }
+}
