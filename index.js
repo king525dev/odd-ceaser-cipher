@@ -50,13 +50,15 @@ function section(title) {
 
 // ---- ASCII art banner -----------------------------------------------------
 const BANNER = `
-${c(CLR.bold + CLR.cyan, ' ██████╗ ██████╗ ██████╗      ██████╗███████╗ █████╗ ███████╗███████╗██████╗')}
-${c(CLR.bold + CLR.cyan, '██╔═══██╗██╔══██╗██╔══██╗    ██╔════╝██╔════╝██╔══██╗██╔════╝██╔════╝██╔══██╗')}
-${c(CLR.bold + CLR.cyan, '██║   ██║██║  ██║██║  ██║    ██║     █████╗  ███████║███████╗█████╗  ██████╔╝')}
-${c(CLR.bold + CLR.cyan, '██║   ██║██║  ██║██║  ██║    ██║     ██╔══╝  ██╔══██║╚════██║██╔══╝  ██╔══██╗')}
-${c(CLR.bold + CLR.cyan, '╚██████╔╝██████╔╝██████╔╝    ╚██████╗███████╗██║  ██║███████║███████╗██║  ██║')}
-${c(CLR.bold + CLR.cyan, ' ╚═════╝ ╚═════╝ ╚═════╝      ╚═════╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝')}
-${c(CLR.dim, '                                        version 2.0 – full Unicode & block cipher')}
+${c(CLR.bold + CLR.cyan, '   ██████╗ ██████╗ ██████╗      ██████╗███████╗ █████╗ ███████╗███████╗██████╗')}
+${c(CLR.bold + CLR.cyan, '  ██╔═══██╗██╔══██╗██╔══██╗    ██╔════╝██╔════╝██╔══██╗██╔════╝██╔════╝██╔══██╗')}
+${c(CLR.bold + CLR.cyan, '  ██║   ██║██║  ██║██║  ██║    ██║     █████╗  ███████║███████╗█████╗  ██████╔╝')}
+${c(CLR.bold + CLR.cyan, '  ██║   ██║██║  ██║██║  ██║    ██║     ██╔══╝  ██╔══██║╚════██║██╔══╝  ██╔══██╗')}
+${c(CLR.bold + CLR.cyan, '  ╚██████╔╝██████╔╝██████╔╝    ╚██████╗███████╗██║  ██║███████║███████╗██║  ██║')}
+${c(CLR.bold + CLR.cyan, '   ╚═════╝ ╚═════╝ ╚═════╝      ╚═════╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝')}
+${c(CLR.bold + CLR.cyan, ' ██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██')}
+${c(CLR.bold + CLR.cyan, ' ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀')}
+${c(CLR.dim, '                                                                   version 2.0           ')}
 `;
 
 // ---- Application core -----------------------------------------------------
@@ -66,7 +68,7 @@ function decrypt(text, key) { return deV2(text, key); }
 function main() {
   console.clear();
   console.log(BANNER);
-  section('W E L C O M E');
+  section('Cipher by king525dev');
 
   function askAction() {
     console.log(c(CLR.bold, 'Choose operation:'));
@@ -79,7 +81,7 @@ function main() {
     } else if (choice === 'd' || choice === 'de' || choice === 'decrypt') {
       runCipher('decrypt');
     } else if (choice === 'q' || choice === 'quit' || choice === 'exit') {
-      console.log(c(CLR.green, '\nGoodbye!\n'));
+      console.log(c(CLR.green, '\nTerminating Program...\n'));
       return;
     } else {
       console.log(c(CLR.red, 'Invalid choice. Please try again.\n'));
