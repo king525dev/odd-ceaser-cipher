@@ -4,6 +4,8 @@
 const enV2 = require('./main/encrypt/encrypt');
 const deV2 = require('./main/decrypt/decrypt');
 const prompt = require('prompt-sync')();
+const fs = require('fs');
+const path = require('path');
 
 // ---- ANSI style helpers ---------------------------------------------------
 const CLR = {
@@ -65,6 +67,62 @@ ${c(CLR.dim, '                                                                  
 function encrypt(text, key) { return enV2(text, key); }
 function decrypt(text, key) { return deV2(text, key); }
 
+// ---- File operations ------------------------------------------------------
+function handleFileMode(mode) {
+  const filePath = prompt(c(CLR.bold, 'Enter file path: ')).trim();
+  if (!filePath) {
+    console.log(c(CLR.red, 'No file path provided.\n'));
+    return;
+  }
+
+  if (!fs.existsSync(filePath)) {
+    console.log(c(CLR.red, `File not found: ${filePath}\n`));
+    return;
+  }
+
+  const keyInput = prompt(c(CLR.bold, 'Enter key (4‑digit number or up‑to‑6‑letter word, leave empty for default): '));
+  const key = keyInput.trim() || undefined;
+
+  let result;
+  try {
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+    result = mode === 'encrypt' ? encrypt(fileContent, key) : decrypt(fileContent, key);
+  } catch (err) {
+    console.log(c(CLR.red, `Error: ${err.message}\n`));
+    return;
+  }
+
+  // Determine output file name
+  const ext = path.extname(filePath);
+  const base = path.basename(filePath, ext);
+  const dir = path.dirname(filePath);
+
+  let outName;
+  if (mode === 'encrypt') {
+    outName = `${base}-encrypted${ext}`;
+  } else {
+    // Decrypt: remove '-encrypted' suffix if present, else just prepend 'decrypted-'
+    if (base.endsWith('-encrypted')) {
+      outName = base.slice(0, -10) + ext;
+    } else {
+      outName = `decrypted-${base}${ext}`;
+    }
+  }
+
+  const outPath = path.join(dir, outName);
+
+  try {
+    fs.writeFileSync(outPath, result.out, 'utf8');
+    box(
+      `${c(CLR.bold, 'File saved:')}\n${c(CLR.green, outPath)}\n${c(CLR.dim, `Key used: ${result.key}`)}`,
+      CLR.yellow
+    );
+  } catch (err) {
+    console.log(c(CLR.red, `Failed to write file: ${err.message}\n`));
+  }
+}
+
+// ---- Main flow ------------------------------------------------------------
 function main() {
   console.clear();
   console.log(BANNER);
@@ -93,6 +151,20 @@ function main() {
     const actionLabel = mode === 'encrypt' ? 'Encrypt' : 'Decrypt';
     section(`${actionLabel} Mode`);
 
+    // Choose input type
+    console.log(c(CLR.bold, 'Input type:'));
+    console.log(`  [${c(CLR.cyan, 'T')}] Text (paste directly)`);
+    console.log(`  [${c(CLR.cyan, 'F')}] File (read from disk)\n`);
+    const typeChoice = prompt('> ').trim().toLowerCase();
+    if (typeChoice === 'f' || typeChoice === 'file') {
+      handleFileMode(mode);
+      askRestart();
+      return;
+    } else if (typeChoice !== 't' && typeChoice !== 'text') {
+      console.log(c(CLR.red, 'Invalid choice. Defaulting to text.\n'));
+    }
+
+    // Text mode (existing flow)
     const text = prompt(c(CLR.bold, 'Enter text: '));
     if (!text) {
       console.log(c(CLR.red, 'No text entered.\n'));
@@ -100,7 +172,7 @@ function main() {
     }
 
     const keyInput = prompt(c(CLR.bold, 'Enter key (4‑digit number or up‑to‑6‑letter word, leave empty for default): '));
-    let key = keyInput.trim() || undefined;  // undefined triggers fallback in the library
+    let key = keyInput.trim() || undefined;
 
     let result;
     try {
@@ -118,7 +190,6 @@ function main() {
       CLR.magenta
     );
 
-    // Copy-friendly line
     console.log(c(CLR.dim, '─'.repeat(60)));
     console.log(c(CLR.dim, `(copy) ${result.out}\n`));
 
