@@ -1,6 +1,9 @@
-const oddCeaser = require('./revOddCeaser');
-const ceaser = require('./revCeaser')
-const reposition = require('./ceasersPositionRev');
+const oddCeaser = require('./legacy/revOddCeaser');
+const newKey = require('../keyGenerator');
+const ceaser = require('./legacy/revCeaser');
+const reposition = require('./legacy/ceasersPositionRev');
+const { deriveKeys } = require('../encrypt/kdf');
+const { decryptWithBlockCipher } = require('./blockCipherRev');
 
 const splitAdd = (num) => {
     const digits = [...String(num)];
@@ -11,26 +14,32 @@ const splitAdd = (num) => {
 
 function decrypt(text, key){
      if (key === undefined || key === null || (typeof key === 'string' && key.trim() === '')) {
-          console.error("No key inputted, Defaulting....")
-          key = '5555';
-    }
-    if (typeof key !== 'string' || !/^\d{4}$/.test(key)) {
-          throw new Error('Key must be a string of exactly 4 digits');
-          key = '5555';
+        key = newKey(999, 10000, true);
+        console.error(`No key input found, defaulting to [${key}]....`)
+    } else {
+        const is4Digit = typeof key === 'string' && /^\d{4}$/.test(key);
+        const isWord   = typeof key === 'string' && /^[A-Za-z]{1,6}$/.test(key);
+
+        if (!is4Digit && !isWord) {
+            throw new Error('Key must be a 4‑digit number or a word up to 6 letters');
+        }
     }
 
-    let iniOut = text;
+    const keys = deriveKeys(key);
 
-     // Reverse extra layers 
-    const seed = splitAdd(key);
+    // --- Version-2 --- //
+//     const afterBlock = decryptWithBlockCipher(text, keys.roundKeys);
+
+    // --- Version-1.1 --- //
+    const seed = splitAdd(keys.legacyKey);
     iniOut = reposition.cog(text, seed);            
     iniOut = reposition.ceasersPosition(iniOut);      
 
      //Odd Ceaser
-      iniOut = oddCeaser(iniOut, key);
+      iniOut = oddCeaser(iniOut, keys.legacyKey);
 
      //Ceaser
-     let finalOut = ceaser(iniOut, key)
+     let finalOut = ceaser(iniOut, keys.legacyKey)
 
      return {
           out: finalOut,

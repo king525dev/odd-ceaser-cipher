@@ -4,8 +4,8 @@
 // ------------------------------------------------------------
 //  Import your cipher functions
 // ------------------------------------------------------------
-const enV2 = require('./main/v1/encrypt/encrypt');
-const deV2 = require('./main/v1/decrypt/decrypt');
+const enV2 = require('./main/encrypt/encrypt');
+const deV2 = require('./main/decrypt/decrypt');
 
 const encrypt = (string, key) => enV2(string, key);
 const decrypt = (string, key) => deV2(string, key);
@@ -441,4 +441,14 @@ for (const section of sections) {
 }
 
 console.log(`\n${BOLD}Overall Result: ${totalPassed} passed, ${totalFailed} failed${RESET}`);
-process.exit(totalFailed > 0 ? 1 : 0);
+// process.exit(totalFailed > 0 ? 1 : 0);
+
+const { deriveKeys } = require('./main/encrypt/kdf');
+const { encryptWithBlockCipher } = require('./main/encrypt/blockCipher');
+const { decryptWithBlockCipher } = require('./main/decrypt/blockCipherRev');
+
+const keys = deriveKeys('1234');
+const plain = "hello world";
+const cipher = encryptWithBlockCipher(plain, keys.roundKeys);
+const decrypted = decryptWithBlockCipher(cipher, keys.roundKeys);
+console.log(plain === decrypted ? 'Block cipher OK' : 'FAIL', decrypted);

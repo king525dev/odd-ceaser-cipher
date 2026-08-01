@@ -1,9 +1,9 @@
-const newKey = require('./keyGenerator');
-const ceaserCipher = require("./ceaser");
-const oddCeaser = require("./oddCeaser");
-const reposition = require('./ceasersPosition');
-
-const nKey = newKey(999, 10000, true);
+const newKey = require('../keyGenerator');
+const ceaserCipher = require("./legacy/ceaser");
+const oddCeaser = require("./legacy/oddCeaser");
+const reposition = require('./legacy/ceasersPosition');
+const { deriveKeys } = require('./kdf');
+const { encryptWithBlockCipher } = require('./blockCipher');
 
 const splitAdd = (num) => {
     const digits = [...String(num)];
@@ -14,28 +14,38 @@ const splitAdd = (num) => {
 
 function encrypt(text, key){
 
-     if (key === undefined || key === null || (typeof key === 'string' && key.trim() === '')) {
-        key = newKey(999, 10000, true);   // this must return a 4‑digit string
+     if (key == undefined || key == null || (typeof key == 'string' && key.trim() === '')) {
+        key = newKey(999, 10000, true);
+        console.error(`No key input found, defaulting to [${key}]....`)
+     } else {
+        const is4Digit = typeof key === 'string' && /^\d{4}$/.test(key);
+        const isWord   = typeof key === 'string' && /^[A-Za-z]{1,6}$/.test(key);
+
+        if (!is4Digit && !isWord) {
+            throw new Error('Key must be a 4‑digit number or a word up to 6 letters');
+        }
      }
 
-    if (typeof key !== 'string' || !/^\d{4}$/.test(key)) {
-        throw new Error('Key must be a string of exactly 4 digits');
-        key = newKey(999, 10000, true);
-    }
+    const keys = deriveKeys(key);
 
+    // --- Version-1 --- //
      //Initial Ceaser
-     let iniOut = ceaserCipher(text, key);
+     let iniOut = ceaserCipher(text, keys.legacyKey);
 
      //Odd Ceaser
-     let finalOut = oddCeaser(iniOut, key);
+     let v1Out = oddCeaser(iniOut, keys.legacyKey);
 
-     // Extra layers
-    finalOut = reposition.ceasersPosition(finalOut);
-    finalOut = reposition.cog(finalOut, splitAdd(key));
+    // --- Version-1.1 --- //
+    v1Out = reposition.ceasersPosition(v1Out);
+    v1Out = reposition.cog(v1Out, splitAdd(keys.legacyKey));
+
+    // --- Version-2 --- //
+    const finalOut = encryptWithBlockCipher(v1Out, keys.roundKeys);
+
 
      return {
-          out: finalOut,
-          key
+          out: v1Out,
+          key: key
      };
 }
 

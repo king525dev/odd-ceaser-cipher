@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require('path');
-const date = require('./modules/date');
+const date = require('../../modules/date');
 const enV2 = require('./main/v1.1/encrypt/encrypt');
 const deV2= require('./main/v1.1/decrypt/decrypt');
 const prompt = require('prompt-sync')();
