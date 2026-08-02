@@ -525,7 +525,7 @@ module.exports = { decryptWithBlockCipher };
   };
 
   modules['./main/encrypt/encrypt.js'] = function (module, exports, require) {
-const newKey = require('../keyGenerator');
+const newKey = require('./main/keyGenerator.jsr');
 const ceaserCipher = require("./legacy/ceaser");
 const oddCeaser = require("./legacy/oddCeaser");
 const reposition = require('./legacy/ceasersPosition');
@@ -581,7 +581,7 @@ module.exports = encrypt;
 
   modules['./main/decrypt/decrypt.js'] = function (module, exports, require) {
 const oddCeaser = require('./legacy/revOddCeaser');
-const newKey = require('../keyGenerator');
+const newKey = require('./keyGenerator');
 const ceaser = require('./legacy/revCeaser');
 const reposition = require('./legacy/ceasersPositionRev');
 const { deriveKeys } = require('../encrypt/kdf');
