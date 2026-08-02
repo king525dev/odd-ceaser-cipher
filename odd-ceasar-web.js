@@ -5,7 +5,7 @@
 
   function require(id) {
     if (cache[id]) return cache[id];
-    const factory = modules[id];
+    const factory = modules[id] || modules[id + '.js'];
     if (!factory) throw new Error('Module not found: ' + id);
     const module = { exports: {} };
     factory(module, module.exports, require);
