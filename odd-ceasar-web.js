@@ -632,6 +632,8 @@ function decrypt(text, key){
 module.exports = decrypt;
   };
 
+  console.log(modules)
+
   // --- Load the top‑level encrypt & decrypt and expose them ---
   const encrypt = require('./main/encrypt/encrypt');
   const decrypt = require('./main/decrypt/decrypt');
