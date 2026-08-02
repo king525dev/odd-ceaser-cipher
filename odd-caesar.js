@@ -561,7 +561,7 @@ module.exports = decrypt;
   };
 
   // --- Load the top‑level encrypt & decrypt and expose them ---
-  //const encrypt = require('./main/encrypt/encrypt');
+  const encrypt = require('./main/encrypt/encrypt');
   const decrypt = require('./main/decrypt/decrypt');
 
   window.OddCaesar = {

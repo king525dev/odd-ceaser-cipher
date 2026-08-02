@@ -5,29 +5,30 @@ const path = require('path');
 // --- All files needed, in dependency order (most fundamental first) ---
 const files = [
   // Unicode shift helpers (no dependencies)
-  './main/encrypt/legacy/unicodeShift.js',
-  './main/decrypt/legacy/revUnicodeShift.js',
+  'main/encrypt/legacy/unicodeShift.js',
+  'main/decrypt/legacy/revUnicodeShift.js',
+  'main/keyGenerator.js',
 
   // Caesar layer
-  './main/encrypt/legacy/ceaser.js',
-  './main/decrypt/legacy/revCeaser.js',
+  'main/encrypt/legacy/ceaser.js',
+  'main/decrypt/legacy/revCeaser.js',
 
   // Odd Caesar layer
-  './main/encrypt/legacy/oddCeaser.js',
-  './main/decrypt/legacy/revOddCeaser.js',
+  'main/encrypt/legacy/oddCeaser.js',
+  'main/decrypt/legacy/revOddCeaser.js',
 
   // Positional & cog shift (v1.1 extras)
-  './main/encrypt/legacy/ceasersPosition.js',
-  './main/decrypt/legacy/ceasersPositionRev.js',
+  'main/encrypt/legacy/ceasersPosition.js',
+  'main/decrypt/legacy/ceasersPositionRev.js',
 
   // KDF + block cipher
-  './main/encrypt/kdf.js',
-  './main/encrypt/blockCipher.js',
-  './main/decrypt/blockCipherRev.js',
+  'main/encrypt/kdf.js',
+  'main/encrypt/blockCipher.js',
+  'main/decrypt/blockCipherRev.js',
 
   // Final v2.0 entry points
-  './main/encrypt/encrypt.js',
-  './main/decrypt/decrypt.js',
+  'main/encrypt/encrypt.js',
+  'main/decrypt/decrypt.js',
 ].map(f => path.join(__dirname, f));
 
 // --- Read each file and extract its module ID (relative path) ---
@@ -71,5 +72,5 @@ const output = `
 })();
 `;
 
-fs.writeFileSync(path.join(__dirname, 'dist', 'odd-caesar.js'), output);
+fs.writeFileSync(path.join(__dirname, 'dist', 'odd-ceasar.js'), output);
 console.log('Bundle written to dist/odd-caesar.js');
