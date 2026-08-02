@@ -72,5 +72,5 @@ const output = `
 })();
 `;
 
-fs.writeFileSync(path.join(__dirname, 'dist', 'odd-ceasar.js'), output);
+fs.writeFileSync(path.join(__dirname, 'dist', 'odd-ceasar-web.js'), output);
 console.log('Bundle written to dist/odd-caesar.js');
