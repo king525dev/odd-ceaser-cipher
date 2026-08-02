@@ -34,8 +34,11 @@ const files = [
 // --- Read each file and extract its module ID (relative path) ---
 const modules = {};
 for (const file of files) {
-  const relative = path.relative(__dirname, file).replace(/\\/g, '/');
+  let relative = path.relative(__dirname, file).replace(/\\/g, '/');
   const code = fs.readFileSync(file, 'utf8');
+  if (relative.endsWith('.js')) {
+      relative = relative.slice(0, -3);      
+  }
   modules['./' + relative] = code;
   modules['./' + relative + '.js'] = code;
 }

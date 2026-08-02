@@ -4,14 +4,27 @@
   const cache = {};
 
   function require(id) {
+    // Try exact match first
     if (cache[id]) return cache[id];
-    const factory = modules[id] || modules[id + '.js'];
+    let factory = modules[id];
+    // If not found, try adding .js (and remove any accidental trailing 'r')
+    if (!factory) {
+        const tryId = id + '.js';
+        factory = modules[tryId];
+        if (factory) id = tryId;  // use the corrected id for caching
+    }
+    if (!factory) {
+        // Also try without .js if the id already had it
+        const plainId = id.replace(/\.js$/, '');
+        factory = modules[plainId];
+        if (factory) id = plainId;
+    }
     if (!factory) throw new Error('Module not found: ' + id);
     const module = { exports: {} };
     factory(module, module.exports, require);
     cache[id] = module.exports;
     return cache[id];
-  }
+}
 
     modules['./main/encrypt/legacy/unicodeShift.js'] = function (module, exports, require) {
 // Range of valid Unicode code points
@@ -525,7 +538,7 @@ module.exports = { decryptWithBlockCipher };
   };
 
   modules['./main/encrypt/encrypt.js'] = function (module, exports, require) {
-const newKey = require('./main/keyGenerator.jsr');
+const newKey = require('./main/keyGenerator.js');
 const ceaserCipher = require("./legacy/ceaser");
 const oddCeaser = require("./legacy/oddCeaser");
 const reposition = require('./legacy/ceasersPosition');
