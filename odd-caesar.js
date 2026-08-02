@@ -568,4 +568,10 @@ module.exports = decrypt;
     encrypt: encrypt,
     decrypt: decrypt
   };
+
+  console.log("OddCeaser Cipher loaded Successfully");
+  console.log("Testing Class...");
+  console.log(window.OddCaesar)
+  console.log("Test Complete");
+
 })();
