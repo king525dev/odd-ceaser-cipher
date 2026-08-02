@@ -36,6 +36,7 @@ The application can be installed through github [here](https://github.com/king52
 ## Authors
 
  **[@king525dev](https://github.com/king525dev)**
+ **[OddCeaser](./odd-caesar.js)**
 
  For more information on the author click [here](https://king525-portfolio.pages.dev/).
 
