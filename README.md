@@ -39,7 +39,7 @@ The application can be installed through github [here](https://github.com/king52
 
 
 
- **[OddCeaser Web](./odd-ceasar-web.js)**
+ **[OddCeaser Web](./odd-caesar-web.js)**
 
  For more information on the author click [here](https://king525-portfolio.pages.dev/).
 
